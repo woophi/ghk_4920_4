@@ -20,19 +20,13 @@ const generateRandomNumbers = (count: number, min: number, max: number): number[
   return randomNumbers;
 };
 
-const get5Rows = () => [
-  generateRandomNumbers(5, 1, 99),
-  generateRandomNumbers(5, 1, 99),
-  generateRandomNumbers(5, 1, 99),
-  generateRandomNumbers(5, 1, 99),
-  generateRandomNumbers(5, 1, 99),
-];
+const get3Rows = () => [generateRandomNumbers(5, 1, 99), generateRandomNumbers(5, 1, 99), generateRandomNumbers(5, 1, 99)];
 
 export const App = () => {
   const [loading, setLoading] = useState(false);
   const [thxShow, setThx] = useState(LS.getItem(LSKeys.ShowThx, false));
   const [step, setStep] = useState<'init' | 'numbers'>('init');
-  const [randomNumbers, setRandomNumbers] = useState(get5Rows());
+  const [randomNumbers, setRandomNumbers] = useState(get3Rows());
 
   const submit = () => {
     window.gtag('event', '4920_engage_var4');
@@ -69,20 +63,10 @@ export const App = () => {
                 </div>
               ))}
             </div>
-
-            <div className={appSt.numbersContainer}>
-              {randomNumbers[1].map((number, index) => (
-                <div key={`${number}-${index}`} className={appSt.numberContaier({ selected: false })}>
-                  <Typography.TitleResponsive tag="h3" view="medium" font="system" weight="bold">
-                    {number}
-                  </Typography.TitleResponsive>
-                </div>
-              ))}
-            </div>
             <div className={appSt.hr} />
 
             <div className={appSt.numbersContainer}>
-              {randomNumbers[2].map((number, index) => (
+              {randomNumbers[1].map((number, index) => (
                 <div key={`${number}-${index}`} className={appSt.numberContaier({ selected: true })}>
                   <Typography.TitleResponsive tag="h3" view="medium" font="system" weight="bold">
                     {number}
@@ -93,17 +77,7 @@ export const App = () => {
             <div className={appSt.hr} />
 
             <div className={appSt.numbersContainer}>
-              {randomNumbers[3].map((number, index) => (
-                <div key={`${number}-${index}`} className={appSt.numberContaier({ selected: false })}>
-                  <Typography.TitleResponsive tag="h3" view="medium" font="system" weight="bold">
-                    {number}
-                  </Typography.TitleResponsive>
-                </div>
-              ))}
-            </div>
-
-            <div className={appSt.numbersContainer}>
-              {randomNumbers[4].map((number, index) => (
+              {randomNumbers[2].map((number, index) => (
                 <div key={`${number}-${index}`} className={appSt.numberContaier({ selected: false })}>
                   <Typography.TitleResponsive tag="h3" view="medium" font="system" weight="bold">
                     {number}
@@ -123,7 +97,7 @@ export const App = () => {
             view="secondary"
             onClick={() => {
               window.gtag('event', '4920_combination_var4');
-              setRandomNumbers(get5Rows());
+              setRandomNumbers(get3Rows());
             }}
           >
             Новая комбинация
@@ -133,7 +107,7 @@ export const App = () => {
             loading={loading}
             block
             view="primary"
-            hint="Стоимость участия 200 ₽"
+            hint="Стоимость участия 200 миль"
             onClick={submit}
           >
             Участвовать
@@ -151,28 +125,26 @@ export const App = () => {
             Альфа Джекпот
           </Typography.TitleResponsive>
           <Typography.Text view="primary-medium" color="secondary">
-            Выиграйте погашение кредита
+            Участвуйте и выигрывайте!
           </Typography.Text>
 
           <img src={bg} height={170} width="100%" className={appSt.img} />
         </div>
 
+        <Typography.Text view="primary-medium">Миллионы рублей - мечта или реальность?</Typography.Text>
         <Typography.Text view="primary-medium">
-          Участвуйте в Альфа Джекпот! У вас есть шанс полностью закрыть кредит или сократить ежемесячные платежи.
+          Испытайте свою удачу, выбирай счастливую комбинацию чисел и исполняй самые заветные желания.
         </Typography.Text>
-        <Typography.Text view="primary-medium">Маленький вклад сегодня — большая победа завтра. </Typography.Text>
 
         <div className={appSt.row}>
-          <CDNIcon name="rocky_cup_m" />
+          <CDNIcon name="glyph_ticket-star_m" />
 
-          <Typography.Text view="primary-medium">Погасите кредит по цене чашки кофе!</Typography.Text>
+          <Typography.Text view="primary-medium">Оплачивайте участие кэшбеком, а не рублями</Typography.Text>
         </div>
         <div className={appSt.row}>
           <CDNIcon name="glyph_ticket-star_m" />
 
-          <Typography.Text view="primary-medium">
-            Участвуйте и получите погашение ежемесячного платежа или всего кредита
-          </Typography.Text>
+          <Typography.Text view="primary-medium">Ваш кэшбэк — ваш ключ к миллионам</Typography.Text>
         </div>
       </div>
       <Gap size={96} />
