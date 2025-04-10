@@ -133,7 +133,7 @@ export const App = () => {
 
         <Typography.Text view="primary-medium">Миллионы рублей - мечта или реальность?</Typography.Text>
         <Typography.Text view="primary-medium">
-          Испытайте свою удачу, выбирай счастливую комбинацию чисел и исполняй самые заветные желания.
+          Испытайте свою удачу, выбирайте счастливую комбинацию чисел и исполняйте самые заветные желания.
         </Typography.Text>
 
         <div className={appSt.row}>
